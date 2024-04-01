@@ -1,0 +1,70 @@
+.contact{
+    padding-left:50px ;
+    padding-top:50px ;
+    padding-bottom:50px ;
+}
+#details{
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.carousel-item{
+    height: 700px;
+}
+
+/* footer */
+
+/* Style for the overall row */
+.row.footer-contact-desc {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+/* Style for each column */
+.col-md-4 {
+    flex: 0 0 30%; /* Adjust the width as needed */
+}
+
+/* Style for the contact-inner div */
+.contact-inner {
+    text-align: center;
+}
+
+/* Style for the icon */
+.contact-inner i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style for the contact-title */
+.contact-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Style for the contact-desc paragraph */
+.contact-desc {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Style for the Google Maps Link */
+.contact-desc a {
+    color: #007bff; /* Change the color as needed */
+    text-decoration: none;
+}
+
+.contact-desc a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
