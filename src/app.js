@@ -2,12 +2,13 @@ const express=require("express");
 const path=require("path");
 const app=express();
 const hbs=require("hbs");
+const warden=require("./models/warden");
 
 require("./db/conn");
 const Register=require("./models/registers");
 
 const port=process.env.PORT || 3000;
-const static_path=path.join(__dirname,"../public");
+const static_path=path.join(__dirname,"..");
 const view_path=path.join(__dirname,"../views");
 // console.log(path.join(__dirname,"../public"))
 console.log(view_path);
@@ -37,23 +38,7 @@ app.post("/register", async (req,res)=>{
         const password=req.body.password;
         const cpassword=req.body.confirmpassword;
         if(password===cpassword){
-            const registerStudent=new Register({
-                fname: req.body.fname,
-                lname:req.body.lname,
-                email:req.body.email,
-                password:req.body.password,
-                confirmpassword:req.body.confirmpassword,
-                gender:req.body.gender,
-                phone:req.body.phone,
-                address:req.body.address,
-                dob:req.body.dob,
-                yog:req.body.yearOfGrad,
-                bloodgroup:req.body.bloodgroup,
-                registerID:req.body.registerID,
-                state:req.body.state
-            })
-
-            const registered=await registerStudent.save();
+            const registerStudent=new Register(req.body);
             res.status(201).render("login")
         } else{
             res.send("Passwords are not matching!!");
@@ -88,6 +73,36 @@ app.post("/login",async (req,res)=>{
     }
 })
 
+app.get('/staff',async (req,res)=>
+{
+    try
+    {
+        res.render('warden_login');
+    }
+    catch(err)
+    {
+        res.send("error in staff")
+    }
+})
+app.post('/staff',async(req,res)=>
+{
+    try{
+        const email=req.body.email;
+        const password=req.body.password;
+        const collegeID=req.body.collegeID;
+        console.log(`email:${email} and password: ${password}`);
+        const useracc=await warden.findOne({email:email});
+
+        if(useracc.password===password && useracc.collegeID===collegeID){
+            res.status(201).render("warden",{user:useracc});
+        }else{
+            res.send("invalid login details");
+        }
+    }catch(err)
+    {
+
+    }
+})
 app.listen(port,()=>{
     console.log(`listening on port ${port}`);
 })
