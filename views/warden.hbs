@@ -18,8 +18,8 @@
     ></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar1">
-        <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-2 my-3" id="navbar1">
+        <a class="navbar-brand" href="#">Admin</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,10 +27,10 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav mr-auto align-items-center">
             <li class="nav-item active">
-              <a class="nav-link" href="./landing.html">Home</a>
+              <a class="nav-link" href="/" action="get">Home Page</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="logout" action="get">Logout</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Pricing</a>
@@ -79,21 +79,29 @@
       <div class="card w-75 mb-3 card text-center">
         <div class="card-body">
           <h5 class="card-title">Update Mess Menu</h5>
-          <p class="card-text">
+          {{!-- <p class="card-text">
             With supporting text below as a natural lead-in to additional
             content.
-          </p>
-          <a href="#" class="btn btn-primary">Button</a>
+          </p> --}}
+          <form action="/uploadMenu" method="POST" enctype="multipart/form-data">
+            <input type="file" name="menu">
+            <button class="btn btn-primary" type="submit">Upload</button>
+          </form>
+          {{!-- <a href="#" class="btn btn-primary">Button</a> --}}
         </div>
       </div>
       <div class="card w-75 mb-3 card text-center">
         <div class="card-body">
           <h5 class="card-title">Notice</h5>
-          <p class="card-text">
+          {{!-- <p class="card-text">
             With supporting text below as a natural lead-in to additional
             content.
-          </p>
-          <a href="#" class="btn btn-primary">Button</a>
+          </p> --}}
+          <form action="/uploadNotice" method="POST" enctype="multipart/form-data">
+            <input type="file" name="notice">
+            <button class="btn btn-primary" type="submit">Upload</button>
+          </form>
+          {{!-- <a href="#" class="btn btn-primary" >Upload</a> --}}
         </div>
       </div>
     </div>

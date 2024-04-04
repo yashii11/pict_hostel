@@ -21,6 +21,19 @@
     />
 </head>
 <body>
+
+  {{#if flash}}
+        {{#if flash.type}}
+            {{#ifEqual flash.type 'success'}}
+                <div style="color: green;">{{flash.message}}</div>
+            {{else}}
+                <div style="color: red;">{{flash.message}}</div>
+            {{/ifEqual}}
+        {{/if}}
+    {{/if}}
+
+
+
   <div class="text-center">
     <section class="h-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">

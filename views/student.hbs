@@ -8,6 +8,31 @@
 </head>
 <body>
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary my-3 p-2" id="navbar1" >
+        <a class="navbar-brand" href="#">Profile</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav mr-auto align-items-center">
+            <li class="nav-item active">
+              <a class="nav-link" href="profile" action="get">View Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/" action="get">Home Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="logout" action="get">Logout</a>
+            </li>
+            {{!-- <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li> --}}
+          </ul>
+        </div>
+      </nav>
+
+
 
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
@@ -16,9 +41,10 @@
             <p class="lead text-body-secondary">Welcome to the student dashboard for PICT hostel facility.</p>
             <p>
               <h2>{{user.fname}} {{user.lname}}</h2>
-              <a href="#" class="btn btn-primary my-2">View Profile</a>
+              {{!-- <a href="profile" action="get" class="btn btn-primary my-2">View Profile</a> --}}
               <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
             </p>
+            
           </div>
         </div>
       </section>
@@ -31,7 +57,8 @@
             <div class="card-body">
               <h5 class="card-title">NOTICE BOARD</h5>
               <p class="card-text">Click here to view all latest notices.</p>
-              <a href="#" class="btn btn-primary">Notice</a>
+              <iframe src="./src/uploads/notice/notice.pdf" width="100%" height="500px"></iframe>
+              {{!-- <a href="#" class="btn btn-primary">Notice</a> --}}
             </div>
           </div>
         </div>
@@ -40,7 +67,8 @@
             <div class="card-body">
               <h5 class="card-title">MESS MENU</h5>
               <p class="card-text">Click here to view the mess menu.</p>
-              <a href="#" class="btn btn-primary">Mess</a>
+              <iframe src="./src/uploads/menu/menu.pdf" width="100%" height="500px"></iframe>
+              {{!-- <a href="#" class="btn btn-primary">Mess</a> --}}
             </div>
           </div>
         </div>
