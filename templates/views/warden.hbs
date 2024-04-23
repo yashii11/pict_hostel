@@ -18,6 +18,7 @@
     ></script>
   </head>
   <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-2 my-3" id="navbar1">
         <a class="navbar-brand" href="#">Admin</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,15 +43,43 @@
         </div>
       </nav>
 
+      <section class="text-center container ">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-bold">ADMIN PROFILE</h1>
+            
+          </div>
+        </div>
+      </section>
+ 
+    
+       
     <!-- cards -->
+    
     <div class="cards">
+
+       <div class="card w-75 mb-3 card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Add Students
+          </h5>
+          <p class="card-text">
+            You can update Student's Details from here
+          </p>
+           <div class="text-center pt-1">
+              <a href="/applicants"><button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" >Add
+        </button></a>
+           </div>
+         
+        </div>
+      </div>
+
       <div class="card w-75 mb-3 card text-center">
         <div class="card-body">
           <h5 class="card-title">Student's Details</h5>
           <p class="card-text">
             You can update Student's Details from here
           </p>
-          <a href="#" class="btn btn-primary">Button</a>
+          <a href="/staff/viewStudents" class="btn btn-primary">Button</a>
         </div>
       </div>
 
@@ -72,17 +101,29 @@
             With supporting text below as a natural lead-in to additional
             content.
           </p>
-          <a href="#" class="btn btn-primary">Button</a>
+          <a href="/staff/viewComplaint" class="btn btn-primary">Button</a>
         </div>
       </div>
 
       <div class="card w-75 mb-3 card text-center">
         <div class="card-body">
-          <h5 class="card-title">Update Mess Menu</h5>
-          {{!-- <p class="card-text">
+          <h5 class="card-title">View Leave Applications</h5>
+          <p class="card-text">
             With supporting text below as a natural lead-in to additional
             content.
-          </p> --}}
+          </p>
+          <a href="/viewLeave" class="btn btn-primary">Button</a>
+        </div>
+      </div>
+ 
+
+      <div class="card w-75 mb-3 card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Update Mess Menu</h5>
+          <p class="card-text">
+            With supporting text below as a natural lead-in to additional
+            content.
+          </p>
           <form action="/uploadMenu" method="POST" enctype="multipart/form-data">
             <input type="file" name="menu">
             <button class="btn btn-primary" type="submit">Upload</button>
@@ -93,15 +134,15 @@
       <div class="card w-75 mb-3 card text-center">
         <div class="card-body">
           <h5 class="card-title">Notice</h5>
-          {{!-- <p class="card-text">
+          <p class="card-text">
             With supporting text below as a natural lead-in to additional
             content.
-          </p> --}}
+          </p>
           <form action="/uploadNotice" method="POST" enctype="multipart/form-data">
             <input type="file" name="notice">
             <button class="btn btn-primary" type="submit">Upload</button>
           </form>
-          {{!-- <a href="#" class="btn btn-primary" >Upload</a> --}}
+          {{!-- <a href="#" class="btn btn-primary">Button</a> --}}
         </div>
       </div>
     </div>

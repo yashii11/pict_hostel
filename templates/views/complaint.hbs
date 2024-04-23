@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Your custom styles -->
+    <style>
+        body {
+            background-color: #CDF5FD;
+        }
+
+        .container {
+            margin-top: 20px;
+            background-color: #fdfdfdfd;
+            /* Light gray background color */
+            border: 1px solid #ccc;
+            /* Gray border */
+            border-radius: 10px;
+            /* Rounded corners */
+            max-width: 800px;
+            padding: 20px;
+            /* Padding inside container */
+        }
+
+        h1 {
+            color: #000000;
+            /* Blue heading color */
+            text-align: center;
+        }
+
+        .form-control {
+            border: 1px solid #007bff;
+            /* Blue border for form inputs */
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            /* Blue button color */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            /* Darker blue on hover */
+        }
+
+        .required::after {
+            content: "*";
+            color: red;
+        }
+
+        .font-weight {
+            font-weight: 550;
+        }
+
+        /* Hide the "Specify Other" text input by default */
+        .other-text {
+            max-width: 300px;
+        }
+
+        .form-group {
+            margin-top: 25px;
+            margin-left: 50px;
+        }
+
+        .form-row {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="margin-bottom: 30px;">
+        <div class="row">
+            <div class="col">
+                <h1>Complaint Form</h1>
+            </div>
+        </div>
+        {{#if success}}
+        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+            {{success}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+
+        {{#if failure}}
+        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+            {{failure}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+        <p style="color: red; margin-top: 30px; margin-left: 30px;">* Indicates required fields</p>
+        <form action="complaint" method="POST">
+            <div class="form-row">
+                <div class="col-md-5">
+                    <label for="firstName" class="required font-weight">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
+                        required>
+                </div>
+                <div class="col-md-5">
+                    <label for="lastName" class="required font-weight">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"
+                        required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-5">
+                    <label for="email" class="required font-weight">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="col-md-5">
+                    <label for="roomNo" class="required font-weight">Room No</label>
+                    <input type="text" class="form-control" id="roomNo" name="roomNo" placeholder="Room No" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="complaint" class="required font-weight">Nature of Complaint</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="maintenance" name="natureOfComplaint"
+                        value="Maintenance Issue">
+                    <label class="form-check-label" for="maintenance">Maintenance Issue</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="noise" name="natureOfComplaint"
+                        value="Noise Complaint">
+                    <label class="form-check-label" for="noise">Noise Complaint</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="safety" name="natureOfComplaint"
+                        value="Safety Concern">
+                    <label class="form-check-label" for="safety">Safety Concern</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="hygiene" name="natureOfComplaint"
+                        value="Hygiene Issue">
+                    <label class="form-check-label" for="hygiene">Hygiene Issue</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="other" name="natureOfComplaint" value="Other">
+                    <label class="form-check-label" for="other">Other</label>
+                    <input type="text" class="form-control other-text" id="otherText" name="otherDescription"
+                        placeholder="If other, please specify">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="complaintDetails" class="required font-weight">Complaint Details</label>
+                <textarea class="form-control" id="complaintDetails" name="complaintDetails" rows="5"
+                    required></textarea>
+            </div>
+            <div class="form-group add-margin-top">
+                <label class="required font-weight">Urgency of Complaint</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="urgency" id="low" value="Low">
+                    <label class="form-check-label" for="low">Low</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="urgency" id="medium" value="Medium">
+                    <label class="form-check-label" for="medium">Medium</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="urgency" id="high" value="High">
+                    <label class="form-check-label" for="high">High</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="urgency" id="urgent" value="Urgent">
+                    <label class="form-check-label" for="urgent">Urgent</label>
+                </div>
+            </div>
+            {{!-- <div class="form-group">
+                <label for="attachments" class="font-weight add-margin-top">Attachments (if any, such as photo or
+                    documents)</label>
+                <input type="file" class="form-control-file" id="attachments" name="uploaded_file"
+                    accept=".pdf, .jpg, .png">
+            </div> --}}
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
