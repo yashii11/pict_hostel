@@ -1,42 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Warden's page</title>
-    <link href="../public/warden.css" rel="stylesheet" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
 
-    <section class="text-center container ">
-        <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-bold">Students Enrolled</h1>
-            
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warden's page</title>
+  <link href="../public/warden.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .custom-text-color {
+      color: #007bff;
+    }
+
+    .custom-border {
+      border: 2px solid #007bff;
+    }
+
+    .table-container {
+      padding: 0 20px;
+      /* Adjust the padding as needed */
+    }
+
+    th {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-bold text custom-text-color">Students Enrolled</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Table container with padding -->
+  <div class="table-container">
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Full Name</th>
+            <th scope="col" class="text-center">Date of Birth</th>
+            <th scope="col" class="text-center">Email</th>
+            <th scope="col" class="text-center">Gender</th>
+            <th scope="col" class="text-center">Contact No</th>
+            <th scope="col" class="text-center">Year of Graduation</th>
+            <th scope="col" class="text-center">Blood Group</th>
+            <th scope="col" class="text-center">Registration ID</th>
+            <th scope="col" class="text-center">State</th>
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Use a loop to populate student data -->
+          {{#each data}}
+          <tr>
+            <td class="text-center">{{this.fname}} {{this.lname}}</td>
+            <td class="text-center">{{this.dob}}</td>
+            <td class="text-center">{{this.email}}</td>
+            <td class="text-center">{{this.gender}}</td>
+            <td class="text-center">{{this.phone}}</td>
+            <td class="text-center">{{this.yog}}</td>
+            <td class="text-center">{{this.bloodgroup}}</td>
+            <td class="text-center">{{this.registerID}}</td>
+            <td class="text-center">{{this.state}}</td>
+            <td class="text-center">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#studentModal{{@index}}">
+                View Student
+              </button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modals for each student -->
+  <!-- Modals for each student -->
+  {{#each data}}
+  <div class="modal fade" id="studentModal{{@index}}" tabindex="-1" aria-labelledby="studentModalLabel{{@index}}"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="studentModalLabel{{@index}}">Student Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Populate student details in the modal -->
+          <ul>
+            <li>Date of Birth: <span id="dob{{@index}}">{{this.dob}}</span></li>
+            <li>Email: <span id="email{{@index}}">{{this.email}}</span></li>
+            <li>Gender: <span id="gender{{@index}}">{{this.gender}}</span></li>
+            <li>Contact No: <span id="phone{{@index}}">{{this.phone}}</span></li>
+            <li>Year of Graduation: <span id="yog{{@index}}">{{this.yog}}</span></li>
+            <li>Blood Group: <span id="bloodgroup{{@index}}">{{this.bloodgroup}}</span></li>
+            <li>Registration ID: <span id="registerID{{@index}}">{{this.registerID}}</span></li>
+          </ul>
+          <!-- Editable fields -->
+          <div id="editFields{{@index}}" style="display: none;">
+            <!-- Add input fields for each editable field -->
+            <input type="text" class="form-control mb-2" id="editDob{{@index}}" value="{{this.dob}}">
+            <input type="email" class="form-control mb-2" id="editEmail{{@index}}" value="{{this.email}}">
+            <select class="form-select mb-2" id="editGender{{@index}}">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <input type="tel" class="form-control mb-2" id="editPhone{{@index}}" value="{{this.phone}}">
+            <input type="text" class="form-control mb-2" id="editYog{{@index}}" value="{{this.yog}}">
+            <input type="text" class="form-control mb-2" id="editBloodgroup{{@index}}" value="{{this.bloodgroup}}">
+            <input type="text" class="form-control mb-2" id="editRegisterID{{@index}}" value="{{this.registerID}}">
           </div>
         </div>
-      </section>
-   
-    <!-- cards -->
-    
-   <div class="cards">
-      {{#each data}}
-          <div class="card w-75 mb-3 pd-4 card ">
-        <div class="card-body">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="toggleEditMode({{@index}})">Edit</button>
+          <button type="button" class="btn btn-danger" onclick="deleteStudent('{{this._id}}')">Delete</button>
+          <button type="button" class="btn btn-success" style="display: none;"
+            onclick="saveChanges({{@index}})">Save
+            Changes</button>
+          {{!-- <a class="btn btn-success" href="/updateStudent/{{this._id}}">Save Changes</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
 
-         <h5>{{this.fname}}     {{this.lname}}</h5>
-         <ul>
+
+  <script>
+    // Function to toggle edit mode
+    function toggleEditMode(index) {
+      const editFields = document.getElementById(`editFields${index}`);
+      const nonEditFields = document.querySelectorAll(`#studentModal${index} span:not(#editFields${index} span)`);
+      const editButton = document.querySelector(`#studentModal${index} .btn-primary`);
+      const saveChangesBtn = document.querySelector(`#studentModal${index} .btn-success`);
+
+      if (editFields.style.display === 'none') {
+        // Enable edit mode
+        editFields.style.display = 'block';
+        nonEditFields.forEach(field => field.style.display = 'inline');
+        editButton.style.display = 'none';
+        saveChangesBtn.style.display = 'block';
+      } else {
+        // Disable edit mode
+        editFields.style.display = 'none';
+        nonEditFields.forEach(field => field.style.display = 'inline');
+        editButton.style.display = 'block';
+        saveChangesBtn.style.display = 'none';
+      }
+    }
+
+    // Function to save changes
+    function saveChanges(index) {
+      const editedData = {
+        name: document.getElementById(`editName${index}`).value,
+        gender: document.getElementById(`editGender${index}`).value,
+        phone: document.getElementById(`editPhone${index}`).value,
+        yog: document.getElementById(`editYog${index}`).value,
+        bloodgroup: document.getElementById(`editBloodgroup${index}`).value,
+        registerID: document.getElementById(`editRegisterID${index}`).value
+      };
+
+      // Send the updated data to the server using an HTTP request
+      fetch(`/updateStudent/${index}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editedData)
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          }
+          throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+          console.log(data); // Handle the response from the server
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+
+    // Function to delete student
+    function deleteStudent(id) {
+      // Send delete request to server and update UI
+      // Implement your logic here to send a request to delete the student with the given id
+      console.log(`Delete student with id: ${id}`);
+
+      // Close the modal
+      $(`#studentModal${index}`).modal('hide');
+    }
+  </script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warden's page</title>
+  <link href="../public/warden.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <style>
+    .custom-text-color {
+      color: #007bff;
+    }
+
+    .custom-border {
+      border: 2px solid #007bff;
+      /* Example: red border with 2px width */
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="text-center container ">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-bold text custom-text-color">Students Enrolled</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- cards -->
+
+  <div class="cards">
+    {{#each data}}
+    <div class="card w-50 mb-3 pd-4 card ">
+      <div class="card-body custom-border">
+
+        <h5 class="text-center">{{this.fname}} {{this.lname}}</h5>
+        <ul>
           <li>Date of Birth:{{this.dob}}</li>
           <li id="email">Email:{{this.email}}</li>
           <li>Gender:{{this.gender}}</li>
@@ -46,13 +275,14 @@
           <li>RegistrationID:{{this.registerID}}</li>
           <li>state:{{this.state}}</li>
           <li>address:{{this.address}}</li>
-         </ul>
-        </div>
-        </div>
-      {{/each}}
-   </div>
-    
-   
-    </script>
-  </body>
-</html>
+        </ul>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+
+  </script>
+</body>
+
+</html> --}}

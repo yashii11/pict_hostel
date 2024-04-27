@@ -1,111 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* Custom Styles */
+    body {
+      background-color: #fff;
+      /* Dark blue background */
+      color: #2e31f8;
+      /* White text color */
+    }
+
+    .navbar {
+      background-color: #5356FF;
+      /* Blue navbar */
+    }
+
+    .navbar-brand {
+      color: #fff;
+      /* White navbar brand text */
+      font-weight: bold;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff;
+      /* White nav links */
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #d8d9fc;
+      /* Light teal on hover */
+    }
+
+    .container {
+      padding: 30px 15px;
+    }
+
+      {
+        {
+        !-- .card {
+          background-color: #5356FF;
+          color: #fff;
+          /* White card text */
+          border-radius: 15px;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          /* Subtle shadow */
+        }
+
+        .card-title {
+          color: #fff;
+          /* Light green card titles */
+          font-weight: bold;
+        }
+
+        .card-text {
+          color: #fff;
+          /* White card text */
+        }
+
+        --
+      }
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow */
+    }
+
+    .card:nth-child(odd) {
+      background: linear-gradient(135deg, #5356FF 0%, #8F94FB 100%);
+    }
+
+    .card:nth-child(even) {
+      background: linear-gradient(135deg, #5356FF 0%, #42A5F5 100%);
+    }
+
+    .card-title {
+      color: #fff;
+      /* Light green card titles */
+      font-weight: bold;
+    }
+
+    .card-text {
+      color: #fff;
+      /* White card text */
+    }
+
+    .btn-primary {
+      color: #4942E4;
+      background-color: #fff;
+      /* Light teal button */
+      border-color: #063630;
+      /* Light teal button border */
+      border-radius: 10px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      color: #0b03a4;
+      font-weight: 500;
+      background-color: #fff;
+      border-color: #5980d9;
+      /* Light green border on hover */
+    }
+
+    .text-body-secondary {
+    color: black;
+    }
+
+    @media (max-width: 576px) {
+      .navbar-nav {
+        margin-left: auto;
+      }
+    }
+  </style>
+
 </head>
+
+
 <body>
+  <nav class="navbar navbar-expand-lg my-3 p-2" id="navbar1">
+    <div class="container">
+      <a class="navbar-brand" href="#"><h3>Student Dashboard</h3></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+             <a class="nav-link" href="profile"><h5><i class="bi bi-person-circle"></i> Profile</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/"><h5>Home</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout"><h5>Logout</h5></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary my-3 p-2" id="navbar1" >
-        <a class="navbar-brand" href="#">Profile</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarColor02">
-          <ul class="navbar-nav mr-auto align-items-center">
-            <li class="nav-item active">
-              <a class="nav-link" href="profile" action="get">View Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/" action="get">Home Page</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="logout" action="get">Logout</a>
-            </li>
-            {{!-- <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li> --}}
-          </ul>
-        </div>
-      </nav>
-
-
-
-    <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-bold">STUDENT PROFILE</h1>
-            <p class="lead text-body-secondary">Welcome to the student dashboard for PICT hostel facility.</p>
-            <p>
-              <h2>{{user.fname}} {{user.lname}}</h2>
-              {{!-- <a href="profile" action="get" class="btn btn-primary my-2">View Profile</a> --}}
-              <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
-            </p>
-            
-          </div>
-        </div>
-      </section>
-
-
-
-      <div class="row">
-        <div class="col-sm-6 mb-3 mb-sm-0 px-md-5 py-5">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">NOTICE BOARD</h5>
-              <p class="card-text">Click here to view all latest notices.</p>
-              <iframe src="./src/uploads/notice/notice.pdf" width="100%" height="500px"></iframe>
-              {{!-- <a href="#" class="btn btn-primary">Notice</a> --}}
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 px-md-5 py-5">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">MESS MENU</h5>
-              <p class="card-text">Click here to view the mess menu.</p>
-              <iframe src="./src/uploads/menu/menu.pdf" width="100%" height="500px"></iframe>
-              {{!-- <a href="#" class="btn btn-primary">Mess</a> --}}
-            </div>
-          </div>
+  <section class="py-3 text-center container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 text-center">
+      <h2 >Welcome <b>{{ user.fname }} {{ user.lname }} </b>to Student Dashboard !</h2>
+    </div>
+  </div>
+</section>
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0 px-md-5 py-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">NOTICE BOARD</h5>
+          <p class="card-text">Click here to view all latest notices.</p>
+          <iframe src="./src/uploads/notice/notice.pdf" width="100%" height="500px"></iframe>
+          {{!-- <a href="#" class="btn btn-primary">Notice</a> --}}
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6 mb-3 mb-sm-0 px-md-5 py-5">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">APPLICATION WINDOW</h5>
-              <p class="card-text">Click here to submit applications.</p>
-              <div class="text-center pt-1">
-              <a href="/complaint"><button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" >File Complaint
-        </button></a>
-           </div>
-           <div class="text-center pt-1">
-              <a href="/leaveRequest"><button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" >Leave Request
-        </button></a>
-           </div>
-              {{!-- <a href="#" class="btn btn-primary">Application</a> --}}
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 px-md-5 py-5">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">ATTENDANCE STATUS</h5>
-              <p class="card-text">Click here to view your attendance details.</p>
-              <a href="#" class="btn btn-primary">Attendance</a>
-            </div>
-          </div>
+    </div>
+    <div class="col-sm-6 px-md-5 py-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">MESS MENU</h5>
+          <p class="card-text">Click here to view the mess menu.</p>
+          <iframe src="./src/uploads/menu/menu.pdf" width="100%" height="500px"></iframe>
+          {{!-- <a href="#" class="btn btn-primary">Mess</a> --}}
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0 px-md-5 py-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">APPLY COMPLAINT</h5>
+          <p class="card-text">Click here to submit a complaint.</p>
+          <a href="/complaint" class="btn btn-primary">Complaint</a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Apply Leave Request Card -->
+    <div class="col-sm-6 mb-3 mb-sm-0 px-md-5 py-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">APPLY LEAVE REQUEST</h5>
+          <p class="card-text">Click here to submit a leave request</p>
+          <a href="/leaveRequest" class="btn btn-primary">Leave Request</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0 px-md-5 py-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">ATTENDANCE</h5>
+          <p class="card-text">Click here to submit a complaint.</p>
+          <a href="/view-attendance" class="btn btn-primary">Complaint</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 
 
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

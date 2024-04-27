@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="../public/mark-attendance.css">
+    <!-- Add the datepicker library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <style>
+        /* Custom CSS styles for improved interface */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Adjust datepicker input */
+        #attendance-date {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-group{
+            width: 200px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mark Attendance</h1>
+
+        <form action="/mark-attendance" method="POST">
+            <div class="form-group">
+                <label for="attendance-date" class="required form-label">Select Date:</label>
+                <input type="date" name="attendance-date" placeholder="DD/MM/YYYY" id="attendance-date" />
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Attendance Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each students}}
+                    <tr>
+                        <td>{{fname}} {{lname}}</td>
+                        <td>
+                            <input type="checkbox" id="{{_id}}" name="students" value="{{_id}}">
+                            <label for="{{_id}}">Present</label>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Include the datepicker library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+        // Initialize the date picker
+        $(document).ready(function () {
+            $('#datepickerStart').datepicker({
+                format: 'dd/mm/yyyy',
+                autoclose: true
+            });
+        });
+    </script>
+</body>
+
+</html>
