@@ -1,0 +1,14 @@
+.cards{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+}
+#navbar1{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #CDF5FD;
+            /* Light blue background color */
+        }
+
+        .container {
+            margin-top: 20px;
+            background-color: #fdfdfdfd;
+            /* Light gray background color */
+            border: 1px solid #ccc;
+            /* Gray border */
+            border-radius: 10px;
+            /* Rounded corners */
+            max-width: 800px;
+            padding: 20px;
+            /* Padding inside container */
+        }
+
+        h1 {
+            color: #000000;
+            /* Blue heading color */
+            text-align: center;
+        }
+
+        .form-control {
+            border: 1px solid #007bff;
+            /* Blue border for form inputs */
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            /* Blue button color */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            /* Darker blue on hover */
+        }
+
+        .required::after {
+            content: "*";
+            color: red;
+        }
+
+        .font-weight {
+            font-weight: 550;
+        }
+
+        /* Hide the "Specify Other" text input by default */
+        .other-text {
+            max-width: 300px;
+        }
+
+        .form-group {
+            margin-top: 25px;
+            margin-left: 50px;
+        }
+
+        .form-row {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+<body style="background-color: #e3dbfa">
+    <div class="container" style="margin-bottom: 30px;">
+        {{#if success}}
+        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+            {{success}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+
+        {{#if failure}}
+        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+            {{failure}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+
+        
+        <div class="row">
+            <div class="col">
+                <h1 style="color: #6434f5">Leaving Request Form</h1>
+            </div>
+        </div>
+        <p style="color: red; margin-top: 30px; margin-left: 30px;">* Indicates required fields</p>
+        <form action="leaveRequest" method="POST">
+            <div class=" form-row">
+                <div class="col-md-5">
+                    <label for="firstName" class="required font-weight">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
+                        required>
+                </div>
+                <div class="col-md-5">
+                    <label for="lastName" class="required font-weight">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"
+                        required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-5">
+                    <label for="email" class="required font-weight">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="col-md-5">
+                    <label for="roomNo" class="required font-weight">Room No</label>
+                    <input type="text" class="form-control" id="roomNo" name="roomNo" placeholder="Room No" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="leave" class="required font-weight">Leave Type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="Sick Leave" name="leaveType" value="Sick Leave">
+                    <label class="form-check-label" for="Sick Leave">Sick Leave</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="Vacation" name="leaveType" value="Vacation">
+                    <label class="form-check-label" for="Vacation">Vacation</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="Personal Leave" name="leaveType"
+                        value="Personal Leave">
+                    <label class="form-check-label" for="Personal Leave">Personal Leave</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="Quitting" name="leaveType" value="Quitting">
+                    <label class="form-check-label" for="Quitting">Quitting</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="other" name="leaveType" value="Other">
+                    <label class="form-check-label" for="other">Other</label>
+                    <input type="text" class="form-control other-text" id="otherText" name="leaveType"
+                        placeholder="If other, please specify">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="datepicker">
+                        <label for="leaveStart" class="required form-label font-weight">Leave Start</label>
+                        <br>
+                        <input type="Date" class="form-control" name="leaveStart" placeholder="DD/MM/YYYY"
+                            id="leaveStart" />
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-outline datepicker ">
+                        <label for="leaveEnd" class="required form-label font-weight">Leave End</label>
+                        <br>
+                        <input type="Date" class="form-control" name="leaveEnd" placeholder="DD/MM/YYYY"
+                            id="leaveEnd" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="comments" class="font-weight">Comments</label>
+                <br>
+                <textarea class="form-control col-md-10" id="comments" name="comments" rows="4"></textarea>
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Request Leave</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Datepicker for Start Date
+            $('#datepickerStart').datepicker({
+                format: 'mm/dd/yyyy',
+                autoclose: true
+            });
+
+            // Datepicker for End Date
+            $('#datepickerEnd').datepicker({
+                format: 'mm/dd/yyyy',
+                autoclose: true
+            });
+
+            // Show/hide Other Text input based on radio button selection
+            $('input[type=radio][name=leaveType]').change(function () {
+                if (this.value === 'Other') {
+                    $('.other-text').show();
+                } else {
+                    $('.other-text').hide();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

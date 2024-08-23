@@ -59,7 +59,5 @@ const studentSchema=new mongoose.Schema({
     }
 })
 
-
-const Register= new mongoose.model("Register",studentSchema);
-
-module.exports=Register;
+const applicant=new mongoose.model("applicant",studentSchema);
+module.exports=applicant;

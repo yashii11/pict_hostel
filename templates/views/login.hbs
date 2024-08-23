@@ -21,8 +21,21 @@
     />
 </head>
 <body>
+
+  {{#if flash}}
+        {{#if flash.type}}
+            {{#ifEqual flash.type 'success'}}
+                <div style="color: green;">{{flash.message}}</div>
+            {{else}}
+                <div style="color: red;">{{flash.message}}</div>
+            {{/ifEqual}}
+        {{/if}}
+    {{/if}}
+
+
+
   <div class="text-center">
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+    <section class="h-100 gradient-form" style="background-color: #e3dbfa">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
@@ -72,7 +85,7 @@
                         </div>
 
                         <div class="text-center pt-1 mb-5 pb-1">
-                          <a class="text-muted" href="#">Staff?</a>
+                          <a class="text-muted" href="/staff">Staff?</a>
                         </div>
       
                         <div class="d-flex align-items-center justify-content-center pb-4">
